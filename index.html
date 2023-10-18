@@ -14,43 +14,51 @@
 
   <div class="container">
     <main>
-      <form action="#" method="get" class="row mt-4">
+      <form action="#" method="get" class="row mt-4 needs-validation" novalidate>
         <div class="col">
           <h1 class="mb-3">Registro</h1>
           <hr class="my-4">
           <div class="row g-3">
             <div class="col-sm-6">
               <label for="nombre" class="form-label">Nombre</label>
-              <input type="text" class="form-control" id="nombre">
+              <input type="text" class="form-control" id="nombre" required>
+              <p class="invalid-feedback">Debe ingresar un nombre</p>
+              <p class="valid-feedback">Nombre valido</p>
             </div>
 
             <div class="col-sm-6">
               <label for="apellido" class="form-label">Apellido</label>
-              <input type="text" class="form-control" id="apellido">
+              <input type="text" class="form-control" id="apellido" required>
+              <p class="invalid-feedback">Debe ingresar un apellido</p>
             </div>
 
             <div class="col-12">
               <label for="email" class="form-label">Email</label>
-              <input type="email" class="form-control" id="email">
+              <input type="email" class="form-control" id="email" required>
+              <p class="invalid-feedback">Debe ingresar un email válido</p>
             </div>
 
             <div class="col-sm-6">
               <label for="password1" class="form-label">Contraseña</label>
-              <input type="password" class="form-control" id="password1">
+              <input type="password" class="form-control" id="password1" required>
+              <p class="invalid-feedback">Debe ingresar una contraseña con almenos 6 caracteres</p>
             </div>
 
             <div class="col-sm-6">
               <label for="password2" class="form-label">Repetir contraseña</label>
-              <input type="password" class="form-control" id="password2">
+              <input type="password" class="form-control" id="password2" required>
+              <p class="invalid-feedback">Debe ser igual a contraseña</p>
             </div>
 
             <div class="col-sm-12">
               <button type="button" class="btn btn-link ps-0" data-bs-toggle="modal"
-                data-bs-target="#modalTerminos">Términos del servicio</button>
+                data-bs-target="#modalTerminos" id="terminosButton">Términos del servicio</button> 
+                <div id="mensaje-error" class="error-message"></div>
+                <p class="invalid-feedback">Debe aceptar los terminos del servicio.</p>
             </div>
 
 
-            <button class="btn btn-primary" type="submit">Registrarme</button>
+            <button class="btn btn-primary" type="button" onclick="validateForm()">Registrarme</button>
 
 
           </div>

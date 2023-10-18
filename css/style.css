@@ -1,3 +1,18 @@
 .container {
   max-width: 960px;
 }
+:invalid{
+  border-radius: 100px;
+}
+
+#mensaje-error {
+  color: red;
+}
+
+.rojo{
+  color: red;
+}
+
+.form-check-input.is-invalid {
+  border-color: red;
+}
