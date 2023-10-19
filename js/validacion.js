@@ -6,6 +6,7 @@ const password2Input = document.getElementById('password2');
 const terminosCheckbox = document.getElementById('terminos');
 const mensajeerror = document.getElementById("mensaje-error");
 const terminosButton = document.getElementById("terminosButton");
+const registrarse = document.getElementById("registrarse");
 
 function validateForm() {
    
@@ -58,26 +59,46 @@ function validateForm() {
       password2Input.setCustomValidity("Las contraseñas no coinciden");
       password2Input.reportValidity();
       password2Input.classList.add("is-invalid");
-      password1Input.setCustomValidity("Las contraseñas no coinciden");
-      password1Input.reportValidity();
-      password1Input.classList.add("is-invalid");
       allValid = false;
     } else {
-        password1Input.classList.add("is-valid");
         password2Input.classList.add("is-valid");
     }
-  
-    if (!terminosCheckbox.checked) {
-        terminosCheckbox.classList.add("is-invalid");
-        mensajeerror.innerText = "Debe aceptar los términos del servicio";
-        terminosButton.classList.add("rojo");
-        allValid = false;
-      } else {
-        mensajeerror.innerText = '';
-        terminosButton.classList.remove("rojo")
-      }
-  
-    if (allValid) {
-      document.querySelector('form').submit();
-    }
+ 
+  if (terminosCheckbox.checked) {
+      mensajeerror.innerText = '';
+      terminosButton.classList.remove("rojo");
+  } else {
+      mensajeerror.innerText = "Debe aceptar los términos del servicio";
+      terminosButton.classList.add("rojo");
+      allValid = false;
   }
+
+  return allValid;
+}
+
+
+
+registrarse.addEventListener("click", function () {
+  registrarse.classList.add("registrado");
+  validateForm();
+  
+  if (registrarse.classList.contains("registrado")) {
+    // Habilitar validación en tiempo real para ciertos campos después de hacer clic en "registrarse"
+    emailInput.addEventListener("keyup", function () {
+      validateForm();
+      emailInput.focus(); // Coloca el focus en el campo de email
+    });
+    password1Input.addEventListener("keyup", function () {
+      validateForm();
+      password1Input.focus(); // Coloca el focus en el campo de contraseña
+    });
+    password2Input.addEventListener("keyup", function () {
+      validateForm();
+      password2Input.focus(); // Coloca el focus en el campo de confirmación de contraseña
+    });
+    terminosCheckbox.addEventListener("change", function () {
+      validateForm();
+      terminosCheckbox.focus(); // Coloca el focus en la casilla de términos y condiciones
+    });
+  }
+});
