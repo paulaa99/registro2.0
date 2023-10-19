@@ -1,14 +1,14 @@
+const nombreInput = document.getElementById('nombre');
+const apellidoInput = document.getElementById('apellido');
+const emailInput = document.getElementById('email');
+const password1Input = document.getElementById('password1');
+const password2Input = document.getElementById('password2');
+const terminosCheckbox = document.getElementById('terminos');
+const mensajeerror = document.getElementById("mensaje-error");
+const terminosButton = document.getElementById("terminosButton");
 
 function validateForm() {
-    const nombreInput = document.getElementById('nombre');
-    const apellidoInput = document.getElementById('apellido');
-    const emailInput = document.getElementById('email');
-    const password1Input = document.getElementById('password1');
-    const password2Input = document.getElementById('password2');
-    const terminosCheckbox = document.getElementById('terminos');
-    const mensajeerror = document.getElementById("mensaje-error");
-    const terminosButton = document.getElementById("terminosButton");
-  
+   
     const inputs = [nombreInput, apellidoInput, emailInput, password1Input, password2Input];
   
     let allValid = true;
@@ -80,26 +80,4 @@ function validateForm() {
     if (allValid) {
       document.querySelector('form').submit();
     }
-  }document.addEventListener('DOMContentLoaded', validateForm);
-
-  // Prueba mensaje por debajo de input
-  // Ejemplo de JavaScript inicial para deshabilitar el envío de formularios si hay campos no válidos
-(function () {
-  'use strict'
-
-  // Obtener todos los formularios a los que queremos aplicar estilos de validación de Bootstrap personalizados
-  var forms = document.querySelectorAll('.needs-validation')
-
-  // Bucle sobre ellos y evitar el envío
-  Array.prototype.slice.call(forms)
-    .forEach(function (form) {
-      form.addEventListener('submit', function (event) {
-        if (!form.checkValidity()) {
-          event.preventDefault()
-          event.stopPropagation()
-        }
-
-        form.classList.add('was-validated')
-      }, false)
-    })
-})()
+  }
